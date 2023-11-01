@@ -127,13 +127,6 @@ services:
       - web
       - db
       - redis
-    secrets:
-      - source: proxy.ca
-        target: /etc/nginx/certs/rengine_chain.pem
-      - source: proxy.cert
-        target: /etc/nginx/certs/rengine.pem
-      - source: proxy.key
-        target: /etc/nginx/certs/rengine_rsa.key
     volumes:
       - ./config/nginx/rengine.conf:/etc/nginx/conf.d/rengine.conf:ro
       - static_volume:/usr/src/app/staticfiles/
@@ -155,10 +148,3 @@ volumes:
   scan_results:
   static_volume:
 
-secrets:
-  proxy.ca:
-    file: ./secrets/certs/rengine_chain.pem
-  proxy.key:
-    file: ./secrets/certs/rengine_rsa.key
-  proxy.cert:
-    file: ./secrets/certs/rengine.pem
